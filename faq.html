@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Support - SweetArt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" type="image/jpeg" href="images/cakes.jpg">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --bg-color: #F8FAFC;
+            --bg-secondary: #F1F5F9;
+            --bg-card: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --accent-color: #E11D48;
+            --accent-dark: #BE123C;
+            --border-color: #E2E8F0;
+            --drawer-bg: rgba(255, 255, 255, 0.98);
+        }
+
+        body.dark-mode {
+            --bg-color: #0B1120;
+            --bg-secondary: #1E293B;
+            --bg-card: #1E293B;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --accent-color: #FB7185;
+            --accent-dark: #F43F5E;
+            --border-color: #334155;
+            --drawer-bg: rgba(11, 17, 32, 0.98);
+        }
+
+        /* RTL Adjustments */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .dropdown-menu {
+            left: auto;
+            right: 0;
+        }
+
+        [dir="rtl"] .nav-link::after {
+            left: auto;
+            right: 0;
+        }
+
+        [dir="rtl"] .group-hover\:translate-x-1:hover {
+            transform: translateX(-0.25rem);
+        }
+
+        [dir="rtl"] .ml-1 {
+            margin-left: 0;
+            margin-right: 0.25rem;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1440px;
+            z-index: 1000;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
+            padding: 12px 24px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link {
+            padding: 8px 4px;
+            margin: 0 12px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transform: translateY(15px);
+            margin-top: 10px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+
+        .dropdown-inner {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-top: 3px solid var(--accent-color);
+            border-radius: 0 0 8px 8px;
+            min-width: 220px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            border-radius: 6px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .dropdown-item:hover {
+            background: var(--bg-secondary);
+            color: var(--accent-color);
+            padding-left: 20px;
+        }
+
+        [dir="rtl"] .dropdown-item:hover {
+            padding-left: 16px;
+            padding-right: 20px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50px;
+        }
+
+        .btn-solid {
+            background: var(--accent-color);
+            color: #FFFFFF !important;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-solid:hover {
+            background: var(--accent-dark);
+            border-color: var(--accent-dark);
+            transform: scale(1.03);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: #FFFFFF !important;
+            transform: scale(1.03);
+        }
+
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .fullscreen-menu {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100dvh;
+            background: var(--drawer-bg);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.95);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+        }
+
+        .fullscreen-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .mobile-link {
+            padding: 10px 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .mobile-link:hover {
+            color: var(--accent-color);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding-top: 60px;
+        }
+
+        footer h4 {
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar flex items-center justify-between">
+        <div class="flex items-center">
+            <a href="index.html" class="text-xl font-black tracking-tighter flex items-center gap-2"
+                style="color: var(--text-main); text-decoration: none;">
+                <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+            </a>
+        </div>
+        <div class="hidden xl:flex justify-center items-center flex-1 px-4">
+            <div class="dropdown">
+                <div class="nav-link">Home <i class="fas fa-chevron-down text-[10px] ml-1 opacity-70"></i></div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-inner">
+                        <a href="index.html" class="dropdown-item">Home Page 1</a>
+                        <a href="home-2.html" class="dropdown-item">Home Page 2</a>
+                    </div>
+                </div>
+            </div>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="services.html" class="nav-link">Workshops</a>
+            <a href="gallery.html" class="nav-link">Gallery</a>
+            <a href="schedule.html" class="nav-link">Schedule</a>
+            <a href="faq.html" class="nav-link active">FAQ</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+
+        <!-- Action Buttons (Toggles & Auth) -->
+        <div class="flex items-center justify-end gap-2 xl:gap-3">
+
+            <!-- Dark Mode & RTL Toggles -->
+            <button
+                class="theme-toggle-btn hidden md:flex w-9 h-9 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] items-center justify-center text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors"
+                title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button
+                class="rtl-toggle-btn hidden md:flex w-9 h-9 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] items-center justify-center text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors font-bold text-xs"
+                title="Toggle Direction">
+                RTL
+            </button>
+
+            <!-- Desktop Login/signup -->
+            <div
+                class="hidden xl:flex items-center gap-3 border-l border-[var(--border-color)] pl-3 rtl:pl-0 rtl:border-l-0 rtl:border-r rtl:pr-3 ml-1">
+                <a href="login.html" class="btn btn-outline !py-2 !px-4 !text-[11px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-2 !px-4 !text-[11px]">signup</a>
+            </div>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <div class="xl:hidden flex items-center ml-1">
+                <button id="mobile-btn"
+                    class="w-9 h-9 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-main)] hover:text-[var(--accent-color)]">
+                    <i class="fas fa-bars text-sm"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HAMBURGER MENU (MOBILE) -->
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <div class="fullscreen-menu" id="fullscreen-menu">
+        <div class="w-full px-8 py-6 flex justify-between items-center shrink-0">
+            <a href="index.html" class="text-2xl font-black tracking-tighter flex items-center gap-2"
+                style="color: var(--text-main); text-decoration: none;">
+                <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+            </a>
+            <button id="close-menu"
+                class="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center hover:text-[var(--accent-color)] bg-[var(--bg-secondary)] text-[var(--text-main)] text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="flex flex-col items-center justify-start w-full overflow-y-auto flex-1 gap-2 pt-6 pb-8">
+            <a href="index.html" class="mobile-link">Home 1</a>
+            <a href="home-2.html" class="mobile-link">Home 2</a>
+            <a href="about.html" class="mobile-link">About</a>
+            sign <a href="services.html" class="mobile-link">Workshops</a>
+            up <a href="gallery.html" class="mobile-link">Gallery</a>
+            <a href="schedule.html" class="mobile-link">Schedule</a>
+            <a href="faq.html" class="mobile-link" style="color: var(--accent-color);">FAQ</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Footer with Toggles -->
+        <div
+            class="w-full px-8 py-8 border-t border-[var(--border-color)] flex flex-col gap-6 shrink-0 bg-[var(--bg-secondary)]">
+
+            <!-- Mobile Dark Mode & RTL Toggles -->
+            <div class="flex justify-center gap-4 mb-2">
+                <button
+                    class="theme-toggle-btn w-12 h-12 rounded-full bg-[var(--bg-card)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors shadow-sm"
+                    title="Toggle Dark Mode">
+                    <i class="fas fa-moon text-lg"></i>
+                </button>
+                <button
+                    class="rtl-toggle-btn w-12 h-12 rounded-full bg-[var(--bg-card)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors font-bold text-sm shadow-sm"
+                    title="Toggle Direction">
+                    RTL
+                </button>
+            </div>
+
+            <!-- Mobile Login/signup -->
+            <div class="flex gap-4 w-full max-w-sm mx-auto">
+                <a href="login.html" class="btn btn-outline flex-1 !py-3">Login</a>
+                <a href="signup.html" class="btn btn-solid flex-1 !py-3">signup</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HERO BANNER (UPDATED FOR FAQ PAGE) -->
+    <section class="relative w-full min-h-[70dvh] pt-32 pb-12 flex items-center bg-[var(--bg-color)] overflow-hidden">
+        <div
+            class="absolute top-1/4 right-0 w-[40%] h-[70%] bg-[var(--accent-color)] opacity-[0.05] rounded-l-full blur-3xl z-0 pointer-events-none hidden lg:block">
+        </div>
+        <div
+            class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-10 items-center relative z-10 mt-6">
+            <div class="flex flex-col items-start text-left justify-center lg:h-full">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--accent-color)]/10 border border-[var(--accent-color)]/20 text-[var(--accent-color)] text-[10px] font-bold uppercase tracking-widest mb-4">
+                    <i class="fas fa-question-circle"></i> Help & Support
+                </div>
+                <h1
+                    class="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.1] mb-4 text-[var(--text-main)] tracking-tight">
+                    Frequently Asked <br class="hidden lg:block">
+                    <span style="color: var(--accent-color);">Questions</span>.
+                </h1>
+                <p
+                    class="text-[var(--text-muted)] text-sm sm:text-lg leading-relaxed max-w-lg font-medium mb-6 lg:mb-8">
+                    Find quick answers regarding our custom cake orders, workshop schedules, dietary options, and
+                    delivery policies. We're here to help make your experience as sweet as possible!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                    <a href="#faq-section-1"
+                        class="btn btn-solid group !py-3 sm:!py-4 !px-6 sm:!px-8 text-xs sm:text-sm flex justify-center items-center gap-3">
+                        <span>Read FAQs</span>
+                        <i class="fas fa-arrow-down transition-transform group-hover:translate-y-1"></i>
+                    </a>
+                    <a href="contact.html"
+                        class="btn btn-outline w-full sm:w-auto !py-3 sm:!py-4 !px-6 sm:!px-8 text-xs sm:text-sm flex justify-center items-center gap-2">
+                        <i class="fas fa-paper-plane text-[var(--accent-color)]"></i> Contact Support
+                    </a>
+                </div>
+            </div>
+            <div class="relative w-full h-[40vh] sm:h-[50vh] lg:h-[60vh] flex items-center justify-center">
+                <div
+                    class="relative w-full h-full max-h-[500px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-[var(--bg-card)] bg-gray-200 flex items-center justify-center">
+                    <img src="images/cakee (4).jpg" alt="Customer Support and Baking"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FAQ SECTION 1: CUSTOM ORDERS & DELIVERY    -->
+    <!-- ========================================== -->
+    <section id="faq-section-1" class="py-20 bg-[var(--bg-secondary)] border-y border-[var(--border-color)]">
+        <div class="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--accent-color)]/10 border border-[var(--accent-color)]/20 text-[var(--accent-color)] text-[10px] font-bold uppercase tracking-widest mb-4">
+                    <i class="fas fa-birthday-cake"></i> The Bakery
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black text-[var(--text-main)] tracking-tight">
+                    Custom Orders & Deliveries
+                </h2>
+            </div>
+
+            <div class="bg-[var(--bg-card)] rounded-[2rem] p-6 sm:p-10 shadow-sm border border-[var(--border-color)]">
+                <!-- FAQ 1.1 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>How far in advance should I place a custom cake order?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            For standard celebratory cakes, we request a minimum of 2 to 3 weeks' notice. However, for
+                            large multi-tiered cakes or intricate wedding designs, we highly recommend booking 3 to 6
+                            months in advance as our calendar fills up quickly during peak seasons.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 1.2 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Do you offer vegan, gluten-free, or allergy-friendly options?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            Yes, we absolutely do! We offer a dedicated menu for vegan and gluten-free cakes. Please
+                            note that while we take extreme precautions to prevent cross-contamination, our kitchen does
+                            process wheat, nuts, and dairy on a daily basis.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 1.3 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Can you replicate an exact cake design I found on Pinterest?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            We love seeing your inspiration boards! While we will not copy another artist's work
+                            exactly, we will gladly use your provided photos as strong inspiration to create a unique,
+                            custom piece that aligns with your vision and our artistic style.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 1.4 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Do you deliver cakes, and what is your delivery radius?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            Yes, delivery is available and heavily encouraged for tiered cakes. We deliver within a
+                            50-mile radius of our studio in Sugar Town. Delivery fees are calculated based on mileage
+                            and the setup time required at your specific venue.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 1.5 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>What is your cancellation or rescheduling policy?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            All custom orders require a 50% non-refundable retainer. If you need to cancel or
+                            reschedule, you must notify us at least 14 days prior to your event to receive a refund on
+                            any amount paid beyond the retainer. Last-minute cancellations (under 7 days) are
+                            non-refundable.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 1.6 -->
+                <div class="border-none">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Can I schedule a cake tasting session before committing?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-4 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            Absolutely! We offer elegant Tasting Boxes for prospective wedding and large event clients.
+                            The box includes 4 of our most popular flavor combinations. If you choose to book with us
+                            for an order over $500, the cost of the tasting box is credited towards your final balance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FAQ SECTION 2: WORKSHOPS & MASTERCLASSES   -->
+    <!-- ========================================== -->
+    <section class="py-20 bg-[var(--bg-color)]">
+        <div class="max-w-[800px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--bg-secondary)] border border-[var(--border-color)] text-[var(--text-muted)] text-[10px] font-bold uppercase tracking-widest mb-4">
+                    <i class="fas fa-chalkboard-teacher text-blue-500"></i> The Classroom
+                </div>
+                <h2 class="text-3xl md:text-4xl font-black text-[var(--text-main)] tracking-tight">
+                    Workshops & Masterclasses
+                </h2>
+            </div>
+
+            <div class="bg-[var(--bg-card)] rounded-[2rem] p-6 sm:p-10 shadow-sm border border-[var(--border-color)]">
+                <!-- FAQ 2.1 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Do I need any prior baking experience to join a workshop?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            It depends entirely on the specific class level. We clearly mark our classes as Beginner,
+                            Intermediate, or Advanced Masterclass. If you are signing up for a Beginner class, no prior
+                            experience is needed—we'll teach you everything from scratch!
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 2.2 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Are all tools and ingredients provided during the class?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            Yes! We want you to just show up and have fun. We provide all the necessary
+                            professional-grade tools, piping tips, pre-baked sponges, fresh buttercream, aprons, and
+                            packaging materials for you to use during the session.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 2.3 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Can I take my sweet creations home after the workshop?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            Absolutely. Everything you decorate during the workshop is yours to keep. We will provide
+                            you with a sturdy bakery box at the end of the session so you can safely transport your
+                            edible masterpiece home to share with friends and family.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 2.4 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>What is the minimum age requirement for your classes?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            For our standard adult workshops, attendees must be 16 years or older. However, we do
+                            occasionally host dedicated "Mommy & Me" classes and Kids' Baking Bootcamps during the
+                            summer holidays, which are tailored for younger bakers!
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 2.5 -->
+                <div class="border-b border-[var(--border-color)]">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>What happens if I get sick and miss a class I booked?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-6 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            Because ingredients are prepped specifically for you, workshop tickets are strictly
+                            non-refundable. However, if you provide us with at least 48 hours notice, we will happily
+                            transfer your ticket to a future class of equal value. Alternatively, you can gift your spot
+                            to a friend.
+                        </p>
+                    </div>
+                </div>
+                <!-- FAQ 2.6 -->
+                <div class="border-none">
+                    <button
+                        class="faq-btn w-full flex justify-between items-center py-5 text-left text-base sm:text-lg font-bold text-[var(--text-main)] hover:text-[var(--accent-color)] transition-colors">
+                        <span>Do you offer private group workshops for team building?</span>
+                        <i class="fas fa-plus text-[var(--accent-color)] transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                        <p class="pb-4 text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
+                            Yes, private workshops are a fantastic idea for corporate team building, bachelorette
+                            parties, or birthday celebrations! We can host private events for groups of 6 to 12 people.
+                            Please fill out our contact form to discuss dates and bespoke curriculum options.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 pt-4">
+
+                <div class="lg:col-span-4">
+                    <a href="index.html" class="text-2xl font-black tracking-tighter block mb-6 flex items-center gap-2"
+                        style="color: var(--text-main); text-decoration: none;">
+                        <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+                    </a>
+                    <p class="opacity-80 leading-relaxed text-sm mb-6 max-w-sm font-medium"
+                        style="color: var(--text-muted);">
+                        Your one-stop destination for spectacular custom cakes, sweet treats, and professional baking
+                        workshops.
+                    </p>
+                    <div class="flex space-x-3 text-lg">
+                        <a href="#" class="text-[var(--text-muted)] hover:text-[var(--accent-color)]"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-[var(--text-muted)] hover:text-[var(--accent-color)]"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" class="text-[var(--text-muted)] hover:text-[var(--accent-color)]"><i
+                                class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h4>Account Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="login.html">Student Login</a></li>
+                        <li><a href="user.html">User Dashboard</a></li>
+                        <li><a href="admin.html">Admin Portal</a></li>
+                        <li><a href="pricing.html">Consultations</a></li>
+                        <li><a href="faq.html">Help & FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-2">
+                    <h4>Categories</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services.html">Wedding Cakes</a></li>
+                        <li><a href="services.html">Birthday Treats</a></li>
+                        <li><a href="services.html">Masterclasses</a></li>
+                        <li><a href="services.html">Tasting Boxes</a></li>
+                        <li><a href="services.html">Supplies</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-4 flex flex-col gap-5">
+                    <div>
+                        <h4>Store Address & Contact</h4>
+                        <ul class="space-y-4 text-[var(--text-muted)] text-sm mt-4">
+                            <li class="flex items-start gap-3">
+                                <div class="mt-1 w-5 flex justify-center text-[var(--accent-color)]"><i
+                                        class="fas fa-map-marker-alt"></i></div>
+                                <div>
+                                    <strong class="text-[var(--text-main)] block mb-1">SweetArt Bakery</strong>
+                                    <span>101 Patisserie Ave, Suite 200<br>Sugar Town, CT 06511</span>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 flex justify-center text-[var(--accent-color)]"><i
+                                        class="fas fa-phone"></i></div>
+                                <a href="tel:+1555019283"
+                                    class="hover:text-[var(--accent-color)] transition-colors">(555) 019-2834</a>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div class="w-5 flex justify-center text-[var(--accent-color)]"><i
+                                        class="fas fa-envelope"></i></div>
+                                <a href="mailto:hello@sweetart.com"
+                                    class="hover:text-[var(--accent-color)] transition-colors">hello@sweetart.com</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div
+                class="border-t border-[var(--border-color)] py-6 mt-10 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
+                <p style="color: var(--text-muted);">&copy; 2026 SweetArt Cakes & Workshops. All rights reserved.</p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cancellation Policy</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Logic
+        const mobileBtn = document.getElementById('mobile-btn');
+        const fullscreenMenu = document.getElementById('fullscreen-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+
+        function toggleMenu() {
+            fullscreenMenu.classList.toggle('active');
+            drawerOverlay.classList.toggle('active');
+            document.body.style.overflow = fullscreenMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        mobileBtn.onclick = toggleMenu;
+        closeMenu.onclick = toggleMenu;
+        drawerOverlay.onclick = toggleMenu;
+
+        // FAQ Accordion Logic
+        const faqButtons = document.querySelectorAll('.faq-btn');
+        faqButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+                const isOpen = content.style.maxHeight;
+
+                // Close all other accordions
+                document.querySelectorAll('.faq-content').forEach(el => {
+                    el.style.maxHeight = null;
+                });
+                document.querySelectorAll('.faq-btn i').forEach(el => {
+                    el.classList.remove('fa-minus');
+                    el.classList.add('fa-plus');
+                    el.style.transform = 'rotate(0deg)';
+                });
+
+                // Toggle current accordion
+                if (!isOpen) {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                    icon.classList.remove('fa-plus');
+                    icon.classList.add('fa-minus');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // --- Dark Mode Logic ---
+        const themeToggleBtns = document.querySelectorAll('.theme-toggle-btn');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                themeToggleBtns.forEach(btn => btn.querySelector('i').className = 'fas fa-sun text-lg');
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeToggleBtns.forEach(btn => btn.querySelector('i').className = 'fas fa-moon text-lg');
+            }
+        }
+
+        // Check local storage or system preference on load
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme(true);
+        }
+
+        themeToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const isDark = document.body.classList.toggle('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                setTheme(isDark);
+            });
+        });
+
+        // --- RTL Logic ---
+        const rtlToggleBtns = document.querySelectorAll('.rtl-toggle-btn');
+        const htmlTag = document.documentElement;
+
+        function setDir(isRtl) {
+            if (isRtl) {
+                htmlTag.setAttribute('dir', 'rtl');
+                rtlToggleBtns.forEach(btn => btn.textContent = 'LTR');
+            } else {
+                htmlTag.setAttribute('dir', 'ltr');
+                rtlToggleBtns.forEach(btn => btn.textContent = 'RTL');
+            }
+        }
+
+        // Check local storage on load
+        const storedDir = localStorage.getItem('dir');
+        if (storedDir === 'rtl') {
+            setDir(true);
+        }
+
+        rtlToggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const currentDir = htmlTag.getAttribute('dir');
+                const isRtl = currentDir !== 'rtl';
+                setDir(isRtl);
+                localStorage.setItem('dir', isRtl ? 'rtl' : 'ltr');
+            });
+        });
+    </script>
+</body>
+
+</html>
