@@ -460,6 +460,33 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 550px) {
+            body {
+                padding-top: 80px; /* Adds space so the card doesn't hide under the fixed toggles */
+                padding-bottom: 30px;
+                align-items: flex-start; /* Allows the card to scroll naturally if screen is too small */
+            }
+
+            .global-toggles {
+                top: 16px;
+                right: 16px;
+                gap: 8px;
+            }
+
+            [dir="rtl"] .global-toggles {
+                right: auto;
+                left: 16px;
+            }
+
+            .global-toggles button {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .global-toggles .rtl-btn {
+                font-size: 0.65rem;
+            }
+
             .signin-card {
                 padding: 32px 24px;
             }
