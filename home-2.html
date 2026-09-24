@@ -91,17 +91,17 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
-            padding: 12px 24px;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.15);
+            padding: 16px 32px; /* Increased padding */
             transition: all 0.3s ease;
         }
 
         .nav-link {
-            padding: 8px 4px;
-            margin: 0 12px;
+            padding: 10px 8px; /* Better internal padding */
+            margin: 0 16px; /* Increased spacing between links */
             color: var(--text-main);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px; /* Slightly larger text */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -200,7 +200,7 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -209,27 +209,31 @@
         }
 
         .btn-solid {
-            background: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), #F43F5E);
             color: #FFFFFF !important;
-            border: 2px solid var(--accent-color);
+            border: 2px solid transparent;
+            box-shadow: 0 8px 24px rgba(225, 29, 72, 0.25);
         }
 
         .btn-solid:hover {
-            background: var(--accent-dark);
-            border-color: var(--accent-dark);
-            transform: scale(1.03);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(225, 29, 72, 0.4);
+            border-color: transparent;
         }
 
         .btn-outline {
             border: 2px solid var(--accent-color);
             color: var(--accent-color);
             background: transparent;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05);
         }
 
         .btn-outline:hover {
-            background: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), #F43F5E);
             color: #FFFFFF !important;
-            transform: scale(1.03);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(225, 29, 72, 0.4);
         }
 
         .drawer-overlay {
@@ -316,10 +320,15 @@
 
     <!-- NAVBAR -->
     <nav class="navbar flex items-center justify-between">
-        <div class="flex items-center">
-            <a href="index.html" class="text-xl font-black tracking-tighter flex items-center gap-2"
-                style="color: var(--text-main); text-decoration: none;">
-                <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3 text-decoration-none group hover:opacity-90 transition-opacity w-fit">
+                <div class="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-pink-400 text-white shadow-lg shadow-pink-500/30 group-hover:shadow-pink-500/50 transition-all duration-300 transform group-hover:-translate-y-0.5">
+                    <i class="fas fa-crown text-lg md:text-xl"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xl md:text-2xl font-black tracking-tight text-[var(--text-main)] leading-none mb-1">SweetArt</span>
+                    <span class="text-[9px] md:text-[10px] font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase leading-none">Cakes</span>
+                </div>
             </a>
         </div>
         <div class="hidden xl:flex justify-center items-center flex-1 px-4">
@@ -355,11 +364,10 @@
                 RTL
             </button>
 
-            <!-- Desktop Login/signup -->
+            <!-- Primary CTA -->
             <div
-                class="hidden xl:flex items-center gap-3 border-l border-[var(--border-color)] pl-3 rtl:pl-0 rtl:border-l-0 rtl:border-r rtl:pr-3 ml-1">
-                <a href="login.html" class="btn btn-outline !py-2 !px-4 !text-[11px]">Login</a>
-                <a href="signup.html" class="btn btn-solid !py-2 !px-4 !text-[11px]">signup</a>
+                class="hidden xl:flex items-center gap-4 border-l border-[var(--border-color)] pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r rtl:pr-4 ml-2">
+                <a href="contact.html" class="btn btn-solid !py-2.5 !px-6 !text-[12px]">Order Now</a>
             </div>
 
             <!-- Mobile Hamburger Menu Button -->
@@ -376,9 +384,14 @@
     <div class="drawer-overlay" id="drawer-overlay"></div>
     <div class="fullscreen-menu" id="fullscreen-menu">
         <div class="w-full px-8 py-6 flex justify-between items-center shrink-0">
-            <a href="index.html" class="text-2xl font-black tracking-tighter flex items-center gap-2"
-                style="color: var(--text-main); text-decoration: none;">
-                <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+            <a href="index.html" class="flex items-center gap-3 text-decoration-none group hover:opacity-90 transition-opacity w-fit">
+                <div class="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-pink-400 text-white shadow-lg shadow-pink-500/30 group-hover:shadow-pink-500/50 transition-all duration-300 transform group-hover:-translate-y-0.5">
+                    <i class="fas fa-crown text-lg md:text-xl"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xl md:text-2xl font-black tracking-tight text-[var(--text-main)] leading-none mb-1">SweetArt</span>
+                    <span class="text-[9px] md:text-[10px] font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase leading-none">Cakes</span>
+                </div>
             </a>
             <button id="close-menu"
                 class="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center hover:text-[var(--accent-color)] bg-[var(--bg-secondary)] text-[var(--text-main)] text-xl">
@@ -415,10 +428,9 @@
                 </button>
             </div>
 
-            <!-- Mobile Login/signup -->
+            <!-- Primary CTA -->
             <div class="flex gap-4 w-full max-w-sm mx-auto">
-                <a href="login.html" class="btn btn-outline flex-1 !py-3">Login</a>
-                <a href="signup.html" class="btn btn-solid flex-1 !py-3">signup</a>
+                <a href="contact.html" class="btn btn-solid flex-1 !py-3">Order Now</a>
             </div>
         </div>
     </div>
@@ -457,7 +469,7 @@
                     Explore Gallery <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"></i>
                 </a>
                 <a href="services.html"
-                    class="btn btn-outline bg-white/5 text-white border-white/30 hover:bg-white hover:text-black !py-4 !px-10 text-sm w-full sm:w-auto backdrop-blur-sm transition-all duration-300">
+                    class="btn border-2 bg-white/5 text-white border-white/30 hover:bg-white hover:text-black !py-4 !px-10 text-sm w-full sm:w-auto backdrop-blur-sm transition-all duration-300">
                     Join a Workshop
                 </a>
             </div>
@@ -683,9 +695,14 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 pt-4">
 
                 <div class="lg:col-span-4">
-                    <a href="index.html" class="text-2xl font-black tracking-tighter block mb-6 flex items-center gap-2"
-                        style="color: var(--text-main); text-decoration: none;">
-                        <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+                    <a href="index.html" class="flex items-center gap-3 text-decoration-none group hover:opacity-90 transition-opacity mb-6 w-fit">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-pink-400 text-white shadow-md">
+                            <i class="fas fa-crown text-lg"></i>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <span class="text-xl font-black tracking-tight text-[var(--text-main)] leading-none mb-1">SweetArt</span>
+                            <span class="text-[9px] font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase leading-none">Cakes</span>
+                        </div>
                     </a>
                     <p class="opacity-80 leading-relaxed text-sm mb-6 max-w-sm font-medium"
                         style="color: var(--text-muted);">

@@ -91,17 +91,17 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
-            padding: 12px 24px;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.15);
+            padding: 16px 32px; /* Increased padding */
             transition: all 0.3s ease;
         }
 
         .nav-link {
-            padding: 8px 4px;
-            margin: 0 12px;
+            padding: 10px 8px; /* Better internal padding */
+            margin: 0 16px; /* Increased spacing between links */
             color: var(--text-main);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px; /* Slightly larger text */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -200,7 +200,7 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -209,27 +209,31 @@
         }
 
         .btn-solid {
-            background: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), #F43F5E);
             color: #FFFFFF !important;
-            border: 2px solid var(--accent-color);
+            border: 2px solid transparent;
+            box-shadow: 0 8px 24px rgba(225, 29, 72, 0.25);
         }
 
         .btn-solid:hover {
-            background: var(--accent-dark);
-            border-color: var(--accent-dark);
-            transform: scale(1.03);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(225, 29, 72, 0.4);
+            border-color: transparent;
         }
 
         .btn-outline {
             border: 2px solid var(--accent-color);
             color: var(--accent-color);
             background: transparent;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05);
         }
 
         .btn-outline:hover {
-            background: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), #F43F5E);
             color: #FFFFFF !important;
-            transform: scale(1.03);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(225, 29, 72, 0.4);
         }
 
         .drawer-overlay {
@@ -359,9 +363,9 @@
 
             <!-- Desktop Login/signup -->
             <div
-                class="hidden xl:flex items-center gap-3 border-l border-[var(--border-color)] pl-3 rtl:pl-0 rtl:border-l-0 rtl:border-r rtl:pr-3 ml-1">
-                <a href="login.html" class="btn btn-outline !py-2 !px-4 !text-[11px]">Login</a>
-                <a href="signup.html" class="btn btn-solid !py-2 !px-4 !text-[11px]">signup</a>
+                class="hidden xl:flex items-center gap-4 border-l border-[var(--border-color)] pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r rtl:pr-4 ml-2">
+                <a href="login.html" class="btn btn-outline !py-2.5 !px-5 !text-[12px]">Login</a>
+                <a href="signup.html" class="btn btn-solid !py-2.5 !px-5 !text-[12px]">Signup</a>
             </div>
 
             <!-- Mobile Hamburger Menu Button -->
@@ -455,7 +459,7 @@
                     </a>
                     <a href="user.html"
                         class="btn btn-outline w-full sm:w-auto !py-3 sm:!py-4 !px-6 sm:!px-8 text-xs sm:text-sm flex justify-center items-center gap-2">
-                        <i class="fas fa-user text-[var(--accent-color)]"></i> Student Portal
+                        <i class="fas fa-user "></i> Student Portal
                     </a>
                 </div>
             </div>

@@ -350,12 +350,14 @@
             padding: 14px;
             background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
             border: none;
-            border-radius: 60px;
+            border-radius: 50px;
             color: #FFFFFF !important;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
             box-shadow: 0 8px 24px rgba(225, 29, 72, 0.25);
             display: flex;
             align-items: center;
@@ -507,7 +509,15 @@
     <div class="signin-card">
 
         <!-- ===== LOGO ===== -->
-        <a href="index.html" class="logo"><i class="fas fa-cake-candles"></i> SweetArt</a>
+        <a href="index.html" class="flex items-center gap-3 text-decoration-none group hover:opacity-90 transition-opacity w-fit">
+                <div class="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-pink-400 text-white shadow-lg shadow-pink-500/30 group-hover:shadow-pink-500/50 transition-all duration-300 transform group-hover:-translate-y-0.5">
+                    <i class="fas fa-crown text-lg md:text-xl"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xl md:text-2xl font-black tracking-tight text-[var(--text-main)] leading-none mb-1">SweetArt</span>
+                    <span class="text-[9px] md:text-[10px] font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase leading-none">Cakes</span>
+                </div>
+            </a>
 
         <h2>Welcome Back!</h2>
         <p class="sub">Sign in to book your upcoming masterclasses</p>

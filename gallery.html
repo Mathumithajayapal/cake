@@ -91,17 +91,17 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.1);
-            padding: 12px 24px;
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.15);
+            padding: 16px 32px; /* Increased padding */
             transition: all 0.3s ease;
         }
 
         .nav-link {
-            padding: 8px 4px;
-            margin: 0 12px;
+            padding: 10px 8px; /* Better internal padding */
+            margin: 0 16px; /* Increased spacing between links */
             color: var(--text-main);
             text-decoration: none;
-            font-size: 13px;
+            font-size: 14px; /* Slightly larger text */
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -200,7 +200,7 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -209,27 +209,31 @@
         }
 
         .btn-solid {
-            background: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), #F43F5E);
             color: #FFFFFF !important;
-            border: 2px solid var(--accent-color);
+            border: 2px solid transparent;
+            box-shadow: 0 8px 24px rgba(225, 29, 72, 0.25);
         }
 
         .btn-solid:hover {
-            background: var(--accent-dark);
-            border-color: var(--accent-dark);
-            transform: scale(1.03);
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(225, 29, 72, 0.4);
+            border-color: transparent;
         }
 
         .btn-outline {
             border: 2px solid var(--accent-color);
             color: var(--accent-color);
             background: transparent;
+            box-shadow: 0 4px 12px rgba(225, 29, 72, 0.05);
         }
 
         .btn-outline:hover {
-            background: var(--accent-color);
+            background: linear-gradient(135deg, var(--accent-color), #F43F5E);
             color: #FFFFFF !important;
-            transform: scale(1.03);
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 34px rgba(225, 29, 72, 0.4);
         }
 
         .drawer-overlay {
@@ -316,10 +320,15 @@
 
     <!-- NAVBAR -->
     <nav class="navbar flex items-center justify-between">
-        <div class="flex items-center">
-            <a href="index.html" class="text-xl font-black tracking-tighter flex items-center gap-2"
-                style="color: var(--text-main); text-decoration: none;">
-                <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="flex items-center gap-3 text-decoration-none group hover:opacity-90 transition-opacity w-fit">
+                <div class="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-pink-400 text-white shadow-lg shadow-pink-500/30 group-hover:shadow-pink-500/50 transition-all duration-300 transform group-hover:-translate-y-0.5">
+                    <i class="fas fa-crown text-lg md:text-xl"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xl md:text-2xl font-black tracking-tight text-[var(--text-main)] leading-none mb-1">SweetArt</span>
+                    <span class="text-[9px] md:text-[10px] font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase leading-none">Cakes</span>
+                </div>
             </a>
         </div>
         <div class="hidden xl:flex justify-center items-center flex-1 px-4">
@@ -332,7 +341,7 @@
                     </div>
                 </div>
             </div>
-            <a href="about.html" class="nav-link">About Us</a>
+            <a href="about.html" class="nav-link">About </a>
             <a href="services.html" class="nav-link">Workshops</a>
             <a href="gallery.html" class="nav-link active">Gallery</a>
             <a href="schedule.html" class="nav-link">Schedule</a>
@@ -355,11 +364,10 @@
                 RTL
             </button>
 
-            <!-- Desktop Login/signup -->
+            <!-- Primary CTA -->
             <div
-                class="hidden xl:flex items-center gap-3 border-l border-[var(--border-color)] pl-3 rtl:pl-0 rtl:border-l-0 rtl:border-r rtl:pr-3 ml-1">
-                <a href="login.html" class="btn btn-outline !py-2 !px-4 !text-[11px]">Login</a>
-                <a href="signup.html" class="btn btn-solid !py-2 !px-4 !text-[11px]">signup</a>
+                class="hidden xl:flex items-center gap-4 border-l border-[var(--border-color)] pl-4 rtl:pl-0 rtl:border-l-0 rtl:border-r rtl:pr-4 ml-2">
+                <a href="contact.html" class="btn btn-solid !py-2.5 !px-6 !text-[12px]">Order Now</a>
             </div>
 
             <!-- Mobile Hamburger Menu Button -->
@@ -376,9 +384,14 @@
     <div class="drawer-overlay" id="drawer-overlay"></div>
     <div class="fullscreen-menu" id="fullscreen-menu">
         <div class="w-full px-8 py-6 flex justify-between items-center shrink-0">
-            <a href="index.html" class="text-2xl font-black tracking-tighter flex items-center gap-2"
-                style="color: var(--text-main); text-decoration: none;">
-                <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+            <a href="index.html" class="flex items-center gap-3 text-decoration-none group hover:opacity-90 transition-opacity w-fit">
+                <div class="flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-pink-400 text-white shadow-lg shadow-pink-500/30 group-hover:shadow-pink-500/50 transition-all duration-300 transform group-hover:-translate-y-0.5">
+                    <i class="fas fa-crown text-lg md:text-xl"></i>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-xl md:text-2xl font-black tracking-tight text-[var(--text-main)] leading-none mb-1">SweetArt</span>
+                    <span class="text-[9px] md:text-[10px] font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase leading-none">Cakes</span>
+                </div>
             </a>
             <button id="close-menu"
                 class="w-10 h-10 rounded-full border border-[var(--border-color)] flex items-center justify-center hover:text-[var(--accent-color)] bg-[var(--bg-secondary)] text-[var(--text-main)] text-xl">
@@ -414,10 +427,9 @@
                 </button>
             </div>
 
-            <!-- Mobile Login/signup -->
+            <!-- Primary CTA -->
             <div class="flex gap-4 w-full max-w-sm mx-auto">
-                <a href="login.html" class="btn btn-outline flex-1 !py-3">Login</a>
-                <a href="signup.html" class="btn btn-solid flex-1 !py-3">signup</a>
+                <a href="contact.html" class="btn btn-solid flex-1 !py-3">Order Now</a>
             </div>
         </div>
     </div>
@@ -452,14 +464,14 @@
                     </a>
                     <a href="pricing.html"
                         class="btn btn-outline w-full sm:w-auto !py-3 sm:!py-4 !px-6 sm:!px-8 text-xs sm:text-sm flex justify-center items-center gap-2">
-                        <i class="fas fa-tag text-[var(--accent-color)]"></i> View Pricing
+                        <i class="fas fa-tag "></i> View Pricing
                     </a>
                 </div>
             </div>
             <div class="relative w-full h-[40vh] sm:h-[50vh] lg:h-[70vh] flex items-center justify-center">
                 <div
                     class="relative w-full h-full max-h-[600px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-[var(--bg-card)] bg-gray-200 flex items-center justify-center">
-                    <img src="images/cakee (5).jpg" alt="Beautiful Cake Gallery"
+                    <img src="images/cakee (7).jpg" alt="Beautiful Cake Gallery"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
             </div>
@@ -482,7 +494,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div
                     class="group relative h-[400px] rounded-[2rem] overflow-hidden bg-[var(--bg-card)] shadow-md hover:shadow-2xl transition-all duration-500">
-                    <img src="images/cakee (6).jpg" alt="Wedding Cake 1"
+                    <img src="images/cakee (15).jpg" alt="Wedding Cake 1"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -493,7 +505,7 @@
                 </div>
                 <div
                     class="group relative h-[400px] rounded-[2rem] overflow-hidden bg-[var(--bg-card)] shadow-md hover:shadow-2xl transition-all duration-500">
-                    <img src="images/cakee (7).jpg" alt="Wedding Cake 2"
+                    <img src="images/cakee (14).jpg" alt="Wedding Cake 2"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -504,7 +516,7 @@
                 </div>
                 <div
                     class="group relative h-[400px] rounded-[2rem] overflow-hidden bg-[var(--bg-card)] shadow-md hover:shadow-2xl transition-all duration-500">
-                    <img src="images/cakee (8).jpg" alt="Wedding Cake 3"
+                    <img src="images/cakee (13).jpg" alt="Wedding Cake 3"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out">
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
@@ -536,7 +548,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div
                     class="group relative h-[300px] rounded-[1.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-sm hover:shadow-xl transition-all duration-300">
-                    <img src="images/cakee (9).jpg" alt="Party Cake 1"
+                    <img src="images/cakee (12).jpg" alt="Party Cake 1"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div
                         class="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -556,7 +568,7 @@
                 </div>
                 <div
                     class="group relative h-[300px] rounded-[1.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-sm hover:shadow-xl transition-all duration-300">
-                    <img src="images/cakee (1).jpg" alt="Party Cake 3"
+                    <img src="images/cakee (11).jpg" alt="Party Cake 3"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div
                         class="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -566,7 +578,7 @@
                 </div>
                 <div
                     class="group relative h-[300px] rounded-[1.5rem] overflow-hidden bg-[var(--bg-secondary)] shadow-sm hover:shadow-xl transition-all duration-300">
-                    <img src="images/cakee (10).jpg" alt="Party Cake 4"
+                    <img src="images/cakee (9).jpg" alt="Party Cake 4"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                     <div
                         class="absolute bottom-0 left-0 w-full bg-white/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -600,7 +612,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div
                     class="bg-[var(--bg-card)] p-4 rounded-[2rem] border border-[var(--border-color)] shadow-sm hover:shadow-lg transition-all duration-300">
-                    <img src="images/cakee (11).jpg" alt="Student Work 1"
+                    <img src="images/cakee (8).jpg" alt="Student Work 1"
                         class="w-full h-64 object-cover rounded-[1.5rem] mb-4">
                     <div class="px-2 pb-2">
                         <div class="flex justify-between items-center mb-2">
@@ -615,7 +627,7 @@
                 </div>
                 <div
                     class="bg-[var(--bg-card)] p-4 rounded-[2rem] border border-[var(--border-color)] shadow-sm hover:shadow-lg transition-all duration-300">
-                    <img src="images/cakee (12).jpg" alt="Student Work 2"
+                    <img src="images/cakee (7).jpg" alt="Student Work 2"
                         class="w-full h-64 object-cover rounded-[1.5rem] mb-4">
                     <div class="px-2 pb-2">
                         <div class="flex justify-between items-center mb-2">
@@ -630,7 +642,7 @@
                 </div>
                 <div
                     class="bg-[var(--bg-card)] p-4 rounded-[2rem] border border-[var(--border-color)] shadow-sm hover:shadow-lg transition-all duration-300">
-                    <img src="images/cakee (13).jpg" alt="Student Work 3"
+                    <img src="images/cakee (6).jpg" alt="Student Work 3"
                         class="w-full h-64 object-cover rounded-[1.5rem] mb-4">
                     <div class="px-2 pb-2">
                         <div class="flex justify-between items-center mb-2">
@@ -691,17 +703,23 @@
                 </div>
             </div>
             
-            <!-- FIXED: Changed sm: to md: to allow for more breathing room on tablet devices before going side-by-side -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto md:h-[500px] order-1 lg:order-2">
+            <!-- FIXED: Removed conflicting hardcoded heights. Using flex-1 wrappers so images perfectly share space without overflowing over the next section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-auto lg:h-[550px] order-1 lg:order-2">
                 <div class="flex flex-col gap-4 h-full">
-                    <img src="images/cakee (14).jpg" alt="Baking Prep"
-                        class="w-full h-[250px] md:h-1/2 object-cover rounded-[2rem] shadow-md hover:scale-[1.02] transition-transform">
-                    <img src="images/cakee (15).jpg" alt="Piping Icing"
-                        class="w-full h-[250px] md:h-1/2 object-cover rounded-[2rem] shadow-md hover:scale-[1.02] transition-transform">
+                    <div class="w-full h-[250px] lg:h-full lg:flex-1 relative rounded-[2rem] overflow-hidden shadow-md">
+                        <img src="images/cakee (5).jpg" alt="Baking Prep"
+                            class="absolute inset-0 w-full h-full object-cover hover:scale-[1.02] transition-transform">
+                    </div>
+                    <div class="w-full h-[250px] lg:h-full lg:flex-1 relative rounded-[2rem] overflow-hidden shadow-md">
+                        <img src="images/cakee (15).jpg" alt="Piping Icing"
+                            class="absolute inset-0 w-full h-full object-cover hover:scale-[1.02] transition-transform">
+                    </div>
                 </div>
-                <div class="h-full md:pt-8 md:pb-8">
-                    <img src="images/cakee (2).jpg" alt="Chef Decorating"
-                        class="w-full h-[300px] md:h-full object-cover rounded-[2rem] shadow-lg hover:scale-[1.02] transition-transform">
+                <div class="flex flex-col h-full lg:py-8">
+                    <div class="w-full h-[300px] lg:h-full lg:flex-1 relative rounded-[2rem] overflow-hidden shadow-lg">
+                        <img src="images/cakee (4).jpg" alt="Chef Decorating"
+                            class="absolute inset-0 w-full h-full object-cover hover:scale-[1.02] transition-transform">
+                    </div>
                 </div>
             </div>
         </div>
@@ -756,9 +774,14 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 mb-10 pt-4">
 
                 <div class="lg:col-span-4">
-                    <a href="index.html" class="text-2xl font-black tracking-tighter block mb-6 flex items-center gap-2"
-                        style="color: var(--text-main); text-decoration: none;">
-                        <i class="fas fa-cake-candles text-[var(--accent-color)]"></i> SweetArt
+                    <a href="index.html" class="flex items-center gap-3 text-decoration-none group hover:opacity-90 transition-opacity mb-6 w-fit">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--accent-color)] to-pink-400 text-white shadow-md">
+                            <i class="fas fa-crown text-lg"></i>
+                        </div>
+                        <div class="flex flex-col justify-center">
+                            <span class="text-xl font-black tracking-tight text-[var(--text-main)] leading-none mb-1">SweetArt</span>
+                            <span class="text-[9px] font-bold tracking-[0.25em] text-[var(--accent-color)] uppercase leading-none">Cakes</span>
+                        </div>
                     </a>
                     <p class="opacity-80 leading-relaxed text-sm mb-6 max-w-sm font-medium"
                         style="color: var(--text-muted);">
